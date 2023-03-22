@@ -33,8 +33,8 @@ const createUser = asyncHandler(async (req, res) => {
     }
     console.log("The request body is:", req.body);
     // Assuming you have already set up a MySQL connection pool or client
-    await db.query('INSERT INTO users (user_name, user_account_code, user_address_1, user_address_2, user_pin_code, user_city, user_state, user_country, user_primary_number, user_secondary_number, user_email_address, user_L1_employee, user_L2_employee, user_GSTIN_number, user_type_of_bussiness, user_owner_name, user_password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [name, account_code, address1, address2, pin_code, city, state, country, primary_number, secondary_number, email_address, l1_employee, l2_employee, gstin_number, type_of_business, owner_name, password]);
-    
+    // await db.query('INSERT INTO users (user_name, user_account_code, user_address_1, user_address_2, user_pin_code, user_city, user_state, user_country, user_primary_number, user_secondary_number, user_email_address, user_L1_employee, user_L2_employee, user_GSTIN_number, user_type_of_bussiness, user_owner_name, user_password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [name, account_code, address1, address2, pin_code, city, state, country, primary_number, secondary_number, email_address, l1_employee, l2_employee, gstin_number, type_of_business, owner_name, password]);
+    await db.query('INSERT INTO users (name, email, phone) VALUES (?, ?, ?)', [name, email, phone]);
     console.log("The request body is:", req.body);
     res.status(201).json({ message: "User created successfully" });
   });
